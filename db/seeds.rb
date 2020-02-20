@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Ingredient.delete_all
+puts "Cleaning DB"
+
+puts "creating DB"
 Ingredient.create!(name: 'lemon')
 Ingredient.create!(name: 'mint')
 Ingredient.create!(name: 'ice')
@@ -25,3 +29,5 @@ Ingredient.create!(name: 'elderflower liquer')
 Ingredient.create!(name: 'milk')
 Ingredient.create!(name: 'amaretto')
 Ingredient.create!(name: 'runny honey')
+
+puts "Finished"
