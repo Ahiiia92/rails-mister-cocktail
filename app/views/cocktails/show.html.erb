@@ -6,19 +6,29 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8">
+    <div class="col-8 col-md-8">
       <% @cocktail.doses.each do |dose|%>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="https://images.pexels.com/photos/269245/pexels-photo-269245.jpeg" />
           <div class="card-product-infos">
             <h2> <%= dose.ingredient.name %></h2>
-            <p><%= dose.description %>.</p>
+            <p><%= dose.description %></p>
           </div>
         </div>
       <% end %>
 
       <div class="btn btn-primar"><%= link_to "<< Back to Cocktails", cocktails_path %></div>
       <div class="btn btn-primar"><%= link_to "Add Ingredients >>", new_cocktail_dose_path(@cocktail) %></div>
+    </div>
+    <div class="col-4 col-md-4">
+            <% @cocktail.doses.each do |dose|%>
+        <div class="card">
+          <div class="card-body">
+            <h2> <%= dose.ingredient.name %></h2>
+            <p><%= dose.description %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
