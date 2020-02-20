@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/613037/pexels-photo-613037.jpeg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg);">
   <div class="container">
     <h1>Welcome !</h1>
     <p>List of our Cocktails</p>
@@ -6,16 +6,18 @@
   </div>
 </div>
 
-<div class="container">
-  <ul style="list-style-type:none"><% @cocktails.each do |cocktail| %>
-    <li>
-      <%= render 'components/card', cocktail: cocktail%>
-    </li>
-    <% end %>
-  </ul>
+<div class="container mt-3">
+  <%= link_to cocktails_path(@cocktail) do %>
+    <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/613037/pexels-photo-613037.jpeg)">
+          <%= cocktail.name %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-<br>
-<p><%= link_to "Add Cocktail", new_cocktail_path %></p>
-
-
+<div class="d-flex justify-content-center container">
+  <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class:"btn btn-primary" %></p>
+</div>
