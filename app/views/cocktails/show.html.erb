@@ -1,4 +1,10 @@
-<h1><%= @cocktail.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/4784/alcohol-bar-party-cocktail.jpg);">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+    <a class="btn btn-flat" href="#">TODO</a>
+  </div>
+</div>
 
-<p><%= link_to "Back to List", cocktails_path %></p>
+
+<div><%= link_to "Back to List", cocktails_path, class: "btn btn-primary" %></div>
 
