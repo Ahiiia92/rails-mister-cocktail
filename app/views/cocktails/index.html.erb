@@ -1,8 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path 'photo-1514933651103-005eec06c04b_ymdgh2' %>');">
   <div class="container">
     <h1>Welcome !</h1>
     <p>List of our Cocktails</p>
-    <p><%= link_to "Add Cocktail", new_cocktail_path, class:"btn btn-primary"%></p>
   </div>
 </div>
 
@@ -11,7 +10,7 @@
     <% @cocktails.each do |cocktail| %>
       <%= link_to cocktail_path(cocktail) do %>
         <div class="cards">
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/613037/pexels-photo-613037.jpeg)">
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path 'photo-1551024709-8f23befc6f87_niji2i' %>')">
               <%= cocktail.name %>
             </div>
         </div>
@@ -21,6 +20,7 @@
 
 </div>
 
-<div class="d-flex justify-content-center container">
+<div class="d-flex justify-content-center container m-15">
   <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class:"btn btn-primary" %></p>
 </div>
+
