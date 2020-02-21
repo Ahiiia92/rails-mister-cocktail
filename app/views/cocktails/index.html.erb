@@ -7,15 +7,18 @@
 </div>
 
 <div class="container mt-3">
-  <%= link_to cocktails_path(@cocktail) do %>
-    <div class="cards">
-      <% @cocktails.each do |cocktail| %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/613037/pexels-photo-613037.jpeg)">
-          <%= cocktail.name %>
+  <div class="row d-flex flex-row justify-content-between">
+    <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="cards">
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/613037/pexels-photo-613037.jpeg)">
+              <%= cocktail.name %>
+            </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
 </div>
 
 <div class="d-flex justify-content-center container">

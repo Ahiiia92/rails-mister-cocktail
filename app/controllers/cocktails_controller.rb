@@ -11,7 +11,7 @@ end
 def new
   @cocktail = Cocktail.new
   if @cocktail.save
-    redirect_to cocktails_path
+    redirect_to root_path
   else
     render :new
   end
@@ -19,7 +19,7 @@ end
 
 def create
   @cocktail = Cocktail.create(cocktail_params)
-  redirect_to cocktails_path
+  redirect_to root_path
 end
 
 private
