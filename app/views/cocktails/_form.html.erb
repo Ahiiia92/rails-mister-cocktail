@@ -3,7 +3,7 @@
     <div class="col-12 col-md-8">
 
       <%= simple_form_for @cocktail do |f| %>
-        <%= f.input :name, label: 'Choose the name of your coktail', error: 'Name is mandatory, please specify one' %>
+        <%= f.input :name, label: "What's the name of your cocktail?", error: 'Name is mandatory, please specify one' %>
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: "btn btn-flat" %>
       <% end %>
