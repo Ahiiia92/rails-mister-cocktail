@@ -10,7 +10,7 @@
     <% @cocktails.each do |cocktail| %>
       <%= link_to cocktail_path(cocktail) do %>
         <div class="cards">
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path 'photo-1551024709-8f23befc6f87_niji2i' %>')">
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag @cocktail.photo.key %>')">
               <%= cocktail.name %>
             </div>
         </div>
