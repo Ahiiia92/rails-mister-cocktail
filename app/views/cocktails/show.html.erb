@@ -14,6 +14,7 @@
             <h2> <%= dose.ingredient.name %></h2>
             <p><%= dose.description %></p>
             <p><%= link_to 'Delete', dose, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            <p><%= link_to 'Edit', dose, method: :edit %></p>
           </div>
         </div>
       <% end %>
@@ -28,7 +29,7 @@
     <div class="col-4 col-md-4">
       <div class="card-product">
         <div class="card-product-infos">
-          <h2> DESCRIPTION </h2>
+          <h2> HOW TO... </h2>
           <p><%= @cocktail.description_drink %></p>
         </div>
       </div>
