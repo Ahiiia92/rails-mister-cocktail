@@ -10,16 +10,26 @@ end
 
 def new
   @cocktail = Cocktail.new
+end
+
+def create
+  @cocktail = Cocktail.save(cocktail_params)
   if @cocktail.save
-    redirect_to root_path
+  redirect_to root_path, notice: 'Garden was successfully created.'
   else
     render :new
   end
 end
 
-def create
-  @cocktail = Cocktail.create(cocktail_params)
-  redirect_to root_path
+def edit
+end
+
+def update
+    if @cocktail.update(cocktail_params)
+      redirect_to @cocktail, notice: 'Garden was successfully updated.'
+    else
+      render :edit
+    end
 end
 
 private

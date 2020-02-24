@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_tag @cocktail.photo.key %>');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_tag @cocktail.photo %>')">
   <div class="container">
     <h1><%= @cocktail.name %></h1>
   </div>
@@ -10,7 +10,14 @@
       <% @cocktail.doses.each do |dose|%>
         <div class="card-product">
           <%-#<%= cl_image_tag @doses.photo.key, height: 300, width: 400, crop: :fill %>
-          <%= cl_image_tag 'photo-1542849187-5ec6ea5e6a27_oc8iry', height: 300, width: 400, crop: :fill %>
+          <%#<%= cl_image_tag @dose.photo.key, height: 300, width: 400, crop: :fill %>
+
+          <% @cocktail.photo.each do |photo| %>
+            <div class="photo">
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            </div>
+          <% end %>
+
           <div class="card-product-infos">
             <h2> <%= dose.ingredient.name %></h2>
             <p><%= dose.description %></p>

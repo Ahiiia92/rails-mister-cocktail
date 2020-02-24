@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path 'photo-1514933651103-005eec06c04b_ymdgh2' %>');">
   <div class="container">
-    <h1>Welcome !</h1>
-    <p>List of our Cocktails</p>
+    <h1>Welcome to your own Cocktail Bar!</h1>
+    <p>Prepare the cocktail of your dreams</p>
   </div>
 </div>
 
@@ -10,7 +10,8 @@
     <% @cocktails.each do |cocktail| %>
       <%= link_to cocktail_path(cocktail) do %>
         <div class="cards">
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag @cocktail.photo.key %>')">
+          <%#<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
               <%= cocktail.name %>
             </div>
         </div>
