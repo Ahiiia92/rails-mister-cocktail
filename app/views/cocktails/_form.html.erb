@@ -4,6 +4,7 @@
 
       <%= simple_form_for @cocktail do |f| %>
         <%= f.input :name, label: "What's the name of your cocktail?", error: 'Name is mandatory, please specify one' %>
+        <%= f.input :description_drink, label: "Please give us a small description", error: 'Description is mandatory' %>
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: "btn btn-flat" %>
       <% end %>

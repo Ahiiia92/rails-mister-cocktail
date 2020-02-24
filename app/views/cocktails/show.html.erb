@@ -10,7 +10,6 @@
       <% @cocktail.doses.each do |dose|%>
         <div class="card-product">
           <%= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
-
           <div class="card-product-infos">
             <h2> <%= dose.ingredient.name %></h2>
             <p><%= dose.description %></p>
@@ -30,7 +29,7 @@
       <div class="card-product">
         <div class="card-product-infos">
           <h2> DESCRIPTION </h2>
-          <p>ADD SOME TEXT HERE</p>
+          <p><%= @cocktail.description_drink %></p>
         </div>
       </div>
     </div>
