@@ -5,7 +5,6 @@
       <%= simple_form_for [@cocktail, @dose] do |f| %>
         <%= f.input :description %>
         <%= f.association :ingredient %>
-        <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: "btn btn-flat" %>
       <% end %>
 
