@@ -13,7 +13,7 @@ def new
 end
 
 def create
-  @cocktail = Cocktail.save(cocktail_params)
+  @cocktail = Cocktail.new(cocktail_params)
   if @cocktail.save
   redirect_to root_path, notice: 'Garden was successfully created.'
   else
