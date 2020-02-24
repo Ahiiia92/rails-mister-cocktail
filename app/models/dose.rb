@@ -1,5 +1,4 @@
 class Dose < ApplicationRecord
-  has_one_attached :photo
   belongs_to :cocktail
   belongs_to :ingredient
 

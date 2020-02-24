@@ -18,12 +18,12 @@ end
 
 def destroy
   @dose = Dose.find(params[:cocktail_id])
-  rediret_to root_path
+  rediret_to cocktail_path(@cocktail)
 end
 
 private
 
 def dose_params
-  params.require(:dose).permit(:description, :ingredient_id, :photo)
+  params.require(:dose).permit(:description, :ingredient_id)
 end
 end

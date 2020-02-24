@@ -26,7 +26,7 @@ end
 
 def update
     if @cocktail.update(cocktail_params)
-      redirect_to @cocktail, notice: 'Garden was successfully updated.'
+      redirect_to @cocktail, notice: 'Cocktail was successfully updated.'
     else
       render :edit
     end
