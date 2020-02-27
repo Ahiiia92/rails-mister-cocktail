@@ -20,11 +20,12 @@
     </ul>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+    <h5 class="card-title">Popular Cocktails</h5>
     <p class="card-text">
       <div class="container mt-3">
         <div class="row d-flex flex-row justify-content-between">
-          <% @cocktails.each do |cocktail| %>
+          <div class="my-container">
+            <% @cocktails.each do |cocktail| %>
             <%= link_to cocktail_path(cocktail) do %>
               <div class="cards">
                     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
@@ -33,12 +34,12 @@
               </div>
             <% end %>
           <% end %>
+          </div>
         </div>
     </p>
     <div class="d-flex justify-content-center container m-15">
       <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class: "btn btn-flat" %></p>
     </div>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 

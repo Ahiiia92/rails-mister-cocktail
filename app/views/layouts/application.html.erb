@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsMisterCocktail</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <title>Mister Cocktail</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,7 +14,7 @@
   </head>
 
   <body>
-    <%= render 'components/navbar' %>
+    <%= render 'components/navbar', except: [:index] %>
     <%= yield %>
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
