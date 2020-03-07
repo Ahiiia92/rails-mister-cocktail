@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <%= favicon_link_tag 'favicon-16x16.png' %>
     <title>Mister Cocktail</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,5 +18,8 @@
     <%= yield %>
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
+    <script src="typed.js"></script>
   </body>
 </html>
+
+<%= render 'components/footer' %>

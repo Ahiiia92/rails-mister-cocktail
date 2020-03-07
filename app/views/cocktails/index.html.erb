@@ -1,49 +1,65 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path 'Mister-cocktail/photo-1514933651103-005eec06c04b_ymdgh2' %>');">
   <div class="container">
+    <%=  %>
     <h1>Welcome to your own Cocktail Bar!</h1>
     <p>Prepare the cocktail of your dreams</p>
   </div>
 </div>
 
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Overview</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Map</a>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">Popular Cocktails</h5>
-    <p class="card-text">
-      <div class="container mt-3">
-        <div class="row d-flex flex-row justify-content-between">
-          <div class="my-container">
-            <% @cocktails.each do |cocktail| %>
-            <%= link_to cocktail_path(cocktail) do %>
-              <div class="cards">
-                    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
-                    <%= cocktail.name %>
-                  </div>
-              </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="card-body">
+      <h5 class="card-title">Popular Cocktails</h5>
+      <p class="card-text">
+        <div class="container mt-3">
+          <div class="row d-flex flex-row justify-content-between">
+            <div class="my-container">
+              <% @cocktails.each do |cocktail| %>
+              <%= link_to cocktail_path(cocktail) do %>
+                <div class="cards">
+                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
+                      <%= cocktail.name %>
+                    </div>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+            </div>
           </div>
-        </div>
-    </p>
-    <div class="d-flex justify-content-center container m-15">
-      <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class: "btn btn-flat" %></p>
+      </p>
+      <div class="d-flex justify-content-center container m-15">
+        <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class: "btn btn-flat" %></p>
+      </div>
+    </div>
     </div>
   </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 
-</div>
 
-<%= render 'components/footer' %>
+
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="images/office.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+
+
+
+
+
 
