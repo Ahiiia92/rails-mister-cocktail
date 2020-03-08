@@ -12,15 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree
 //= require jquery
 //= require typed
-//= require bootstrap-sprockets
 // import { multipleSelect } from "../components/select";
 // import { toggleForm } from "../components/form";
-import { typed } from "../components/typed";
 
 // multipleSelect();
 // toggleForm();
-typed();
+

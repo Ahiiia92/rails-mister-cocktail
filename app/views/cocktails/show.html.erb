@@ -1,10 +1,11 @@
+<script src="typed.js"></script>
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo %>')">
   <div class="container">
     <h1><%= @cocktail.name %></h1>
-        <div id="typed-strings">
-          <p>Typed.js is a <strong>JavaScript</strong> library.</p>
-          <p>It can type anything you want</p>
-        </div>
+    <p>
+      <span id="banner-typed-text"></span>
+    </p>
   </div>
 </div>
 
