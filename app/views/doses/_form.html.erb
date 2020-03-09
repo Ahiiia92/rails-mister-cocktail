@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
 
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= simple_form_for([@cocktail, @dose]) do |f| %>
         <%= f.input :description %>
         <%= f.association :ingredient %>
         <%= f.button :submit, class: "btn btn-flat" %>
