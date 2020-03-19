@@ -9,8 +9,8 @@ function addDose(doseHTML) {
 }
 
 <% if @dose.errors.any? %>
-  refreshForm('<%= j render "doses/form", restaurant: @restaurant, dose: @dose %>');
+  refreshForm('<%= j render "doses/form", cocktail: @cocktail, dose: @dose %>');
 <% else %>
   addDose('<%= j render "doses/show", dose: @dose %>');
-  refreshForm('<%= j render "doses/form", restaurant: @restaurant, dose: Dose.new %>');
+  refreshForm('<%= j render "doses/form", cocktail: @cocktail, dose: @dose %>');
 <% end %>
