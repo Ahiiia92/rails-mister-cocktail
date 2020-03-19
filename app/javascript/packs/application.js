@@ -8,7 +8,7 @@ import { loadDynamicBannerText } from '../plugins/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import { readMore } from '../plugins/read_more';
 
+initMapbox();
 loadDynamicBannerText();
 initUpdateNavbarOnScroll();
-initMapbox();
 readMore();
