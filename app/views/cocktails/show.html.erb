@@ -20,7 +20,7 @@
           <% @cocktail.doses.each do |dose|%>
             <div class="card-product">
               <%= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
-              <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-infos">
+              <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
                 <h2> <%= dose.ingredient.name %></h2>
                 <p><%= dose.description %></p>
                 <p><%= link_to 'Delete', dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></p>
@@ -40,12 +40,16 @@
       </div>
     </div>
     <div class="col-4 col-md-4">
-      <div class="card-product">
         <div class="card-product-infos">
           <h2> HOW TO... </h2>
           <p><%= @cocktail.description_drink %></p>
+            <div class="block">
+            <div class="content">
+              <p class="js-excerpt excerpt-hidden"><%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit " * 20 %></p>
+            </div>
+              <a role="button" class="js-read-more" href="#">Read More</a>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

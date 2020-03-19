@@ -90,8 +90,22 @@
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
+.card-product-infos {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 2px;
   padding: 16px;
-  height: 6em;
+  margin-top: 16px;
+  height: 90%;
+  h1 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+
+.card-product-actions {
+  padding-left: 15px;
 }
 
