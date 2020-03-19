@@ -1,13 +1,6 @@
 <script src="typed.js"></script>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path 'Mister-cocktail/photo-1542849187-5ec6ea5e6a27_oc8iry' %>')">
-  <div class="container">
-    <h1><%= @cocktail.name %></h1>
-    <p>
-      <span id="banner-typed-text"></span>
-    </p>
-  </div>
-</div>
+<%= render 'components/banner-show' %>
 
 <div class="container">
   <div class="row justify-content-center">
