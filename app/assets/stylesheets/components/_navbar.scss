@@ -1,6 +1,5 @@
 .navbar-lewagon {
   height: 50px;
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +18,8 @@
 }
 
 .navbar-lewagon-white {
-  background: white;
+  background-color: white;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
 }
 
 
