@@ -1,0 +1,53 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-popup-content{
+  font-size: 18px;
+  margin: 0.7rem 0rem;
+  line-height: 1.2rem;
+}
+
+.card-popup-footer {
+  font-size: 12px;
+  line-height: 0.8rem;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+
+}
+
+.card-popup-footer-location {
+ display: flex;
+ align-items: top;
+ max-width: 70%;
+}
+
+.card-popup-footer i{
+margin: 0px 0.3rem 0px 0px;
+}
+
+.card-popup-footer-comments {
+ display: flex;
+ align-items: top;
+}
+
+.card-popup-header {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.card-popup-header img {
+  width: 20px;
+  height: 20px;
+  margin: 0px 0.3rem 0px 0px;
+}
+
