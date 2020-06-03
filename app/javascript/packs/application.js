@@ -7,8 +7,10 @@ import { initUpdateNavbarOnScroll } from '../plugins/navbar';
 import { loadDynamicBannerText } from '../plugins/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import { readMore } from '../plugins/read_more';
+import { searchCocktail } from '../plugins/cocktails_api'
 
 initMapbox();
 loadDynamicBannerText();
 initUpdateNavbarOnScroll();
 readMore();
+searchCocktail();

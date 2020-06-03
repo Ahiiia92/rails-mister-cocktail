@@ -5,45 +5,37 @@
   <div class="row justify-content-center">
     <div class="col-10 pt-2">
 
-<!-- Popular Cocktails -->
-          <div class="card-body">
-          <h5 class="card-title">Popular Cocktails</h5>
-          <p class="card-text">
-            <div class="container mt-3">
-              <div class="row d-flex flex-row justify-content-between">
-                <div class="my-container">
-                  <% @cocktails.each do |cocktail| %>
-                  <%= link_to cocktail_path(cocktail) do %>
-                    <div class="cards">
-                          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
-                          <%= cocktail.name %>
-                        </div>
-                    </div>
-                  <% end %>
-                <% end %>
+      <!-- Popular Cocktails -->
+      <div class="card-body">
+        <form id="search-cocktails" class="form-inline">
+          <input id="search-keyword" type="text" class="form-control ml-auto mr-2" placeholder="Search cocktails">
+          <input type="submit" class="btn btn-primary mr-auto ml-2" value="Search">
+        </form>
+        <ul id="results" class="list-inline"></ul>
+
+        <h5 class="card-title">List of our Cocktails</h5>
+        <ul id="results"></ul>
+        <p class="card-text">
+          <div class="container mt-3">
+            <div class="row d-flex flex-row justify-content-between">
+              <div class="my-container">
+                <% @cocktails.each do |cocktail| %>
+                <%= link_to cocktail_path(cocktail) do %>
+                <div class="cards">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
+                    <%= cocktail.name %>
+                  </div>
                 </div>
+                <% end %>
+                <% end %>
               </div>
             </div>
-          </p>
-          <div class="d-flex justify-content-center container m-15">
-            <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class: "btn btn-flat" %></p>
           </div>
+        </p>
+        <div class="d-flex justify-content-center container m-15">
+          <p><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), class: "btn btn-flat" %></p>
         </div>
-
-<!-- Map - Where we are -->
-        <div class="container">
-          <div class="row d-flex flex-row justify-content-center">
-            <div class="col-10 pt-2">
-              <div
-                  id="map"
-                  style="width: 100%;
-                  height: 600px;"
-                  data-markers="<%= @markers.to_json %>"
-                  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-                ></div>
-            </div>
-          </div>
-        </div>
+      </div>
 
     </div>
   </div>
