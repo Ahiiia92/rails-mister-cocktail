@@ -4,14 +4,6 @@ before_action :set_cocktail, only: [:show, :edit, :update]
 def index
   @cocktails = Cocktail.all
   @cocktails = Cocktail.geocoded
-
-  @markers = @cocktails.map do |cocktail|
-      {
-        lat: 52.5200,
-        lng: 13.4050,
-        infoWindow: render_to_string(partial: "info_window", locals: { cocktail: cocktail })
-      }
-    end
 end
 
 def show
