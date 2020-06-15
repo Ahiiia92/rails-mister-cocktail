@@ -13,11 +13,15 @@
           <% @cocktail.doses.each do |dose|%>
             <div class="card-product">
               <%= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
-              <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
-                <h2> <%= dose.ingredient.name %></h2>
-                <p><%= dose.description %></p>
-                <p><%= link_to 'Delete', dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></p>
-                <p><%= link_to 'Edit', dose, method: :edit %></p>
+              <div class="card-infos">
+                <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
+                  <h2> <%= dose.ingredient.name %></h2>
+                  <p><%= dose.description %></p>
+                </div>
+                <div class="card-product-btns">
+                  <%= link_to 'Delete', dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "btn-flat" %>
+                  <%= link_to 'Edit', dose, method: :edit, class: "btn-flat" %>
+                </div>
               </div>
             </div>
           <% end %>
@@ -25,11 +29,8 @@
       </div>
 
       <div class="col-8 col-md-8 text-align-center">
-        <div class= "btn" ><%= link_to "<< Back to Cocktails", root_path %>
-
-        </div>
-        <div class= "btn" ><%= link_to "Add Ingredients >>", new_cocktail_dose_path(@cocktail) %>
-        </div>
+        <%= link_to "<< Back to Cocktails", root_path, class: "btn-flat" %>
+        <%= link_to "Add Ingredients >>", new_cocktail_dose_path(@cocktail), class: "btn-flat" %>
       </div>
     </div>
     <div class="col-4 col-md-4">

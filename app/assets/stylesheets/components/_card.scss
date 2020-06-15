@@ -1,49 +1,48 @@
 .cards {
-  grid-gap: 16px;
-  width: 100px;
+  grid-gap: 1rem;
   margin-bottom: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
+// // Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
 
-  .card-product-infos {
-    grid-template-columns: 1fr;
-  }
-}
+//   .card-product-infos {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
 
 .card-category {
@@ -66,17 +65,22 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background: $vert;
+  box-shadow: 0 0 15px rgb(243, 233, 210);
   display: flex;
   align-items: center;
   margin-top: 15px;
+  justify-content: space-between;
+  position: relative;
 }
 
 .card-product img {
   height: 100%;
   width: 120px;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .card-product h2 {
@@ -113,4 +117,25 @@
 
 .card-product-actions {
   padding-left: 15px;
+}
+
+#results {
+  display: flex;
+  gap: 1rem;
+}
+
+.card-product-btns {
+  display: inline-grid;
+  padding-right: 10px;
+  margin-bottom: 15px;
+}
+
+.card-infos {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 120px;
+  margin-top: 15px;
+  text-align: center;
+  place-items: center;
 }
