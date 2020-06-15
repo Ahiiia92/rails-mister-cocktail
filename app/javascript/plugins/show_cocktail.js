@@ -5,8 +5,6 @@ const showCoktails = (query) => {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
     .then(response => response.json())
     .then((data) => {
-      console.log(data);
-      console.log(data.drinks[0]);
       data.drinks.forEach((description) => {
         const descript = `
             <p>${description.strIBA}</p>
@@ -15,7 +13,6 @@ const showCoktails = (query) => {
           `;
         console.log(descript);
         description.insertAdjacentHTML("beforeend", descript);
-        description.insertAdjacentHTML("beforeend", ingredient);
       });
     });
 
