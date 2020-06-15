@@ -1,5 +1,3 @@
-<script src="typed.js"></script>
-
 <%= render 'components/banner-show' %>
 
 <div class="container">
@@ -19,18 +17,17 @@
                   <p><%= dose.description %></p>
                 </div>
                 <div class="card-product-btns">
-                  <%= link_to 'Delete', dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "btn-flat" %>
-                  <%= link_to 'Edit', dose, method: :edit, class: "btn-flat" %>
+                  <%= link_to dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                  <%= link_to dose, method: :edit do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
                 </div>
               </div>
             </div>
           <% end %>
         <% end %>
-      </div>
-
-      <div class="col-8 col-md-8 text-align-center">
-        <%= link_to "<< Back to Cocktails", root_path, class: "btn-flat" %>
-        <%= link_to "Add Ingredients >>", new_cocktail_dose_path(@cocktail), class: "btn-flat" %>
       </div>
     </div>
     <div class="col-4 col-md-4">
@@ -45,6 +42,10 @@
               <a role="button" class="js-read-more" href="#">Read More</a>
             </div>
         </div>
+    </div>
+    <div class="col-12 col-md-12 w-100 mt-3 text-align-center btns-bottom">
+      <%= link_to "<< Back to Cocktails", root_path, class: "btn-flat" %>
+      <%= link_to "Add Ingredients >>", new_cocktail_dose_path(@cocktail), class: "btn-flat" %>
     </div>
   </div>
 </div>

@@ -66,12 +66,12 @@
   overflow: hidden;
   height: 120px;
   background: $vert;
-  box-shadow: 0 0 15px rgb(243, 233, 210);
   display: flex;
   align-items: center;
   margin-top: 15px;
   justify-content: space-between;
   position: relative;
+  border-bottom: solid 1px;
 }
 
 .card-product img {
@@ -98,13 +98,14 @@
 }
 
 .card-product-infos {
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background: $vert;
+  box-shadow: 0 0 15px #12739369;
   border-radius: 2px;
   padding: 16px;
   margin-top: 16px;
-  height: 90%;
+  height: 97%;
   grid-template-columns: 1fr;
+  border-style: solid double;
 
   h1 {
     font-size: 16px;
@@ -117,6 +118,7 @@
 
 .card-product-actions {
   padding-left: 15px;
+  text-align: justify;
 }
 
 #results {
@@ -126,8 +128,7 @@
 
 .card-product-btns {
   display: inline-grid;
-  padding-right: 10px;
-  margin-bottom: 15px;
+  padding-right: 20px;
 }
 
 .card-infos {
@@ -135,7 +136,14 @@
   display: flex;
   justify-content: space-between;
   margin-left: 120px;
-  margin-top: 15px;
   text-align: center;
   place-items: center;
+}
+
+.card-product-btns>a>i {
+  color: $champagne;
+
+  i:hover {
+    color: $herbe;
+  }
 }

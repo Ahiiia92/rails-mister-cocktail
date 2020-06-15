@@ -18,3 +18,28 @@
   border-top: solid 1px #f3e9d2;
   text-decoration: none;
 }
+
+.btns-bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-search {
+  transition: background 0.3s ease;
+  margin-top: 15px;
+  border: $vert-clair;
+  background-color: $vert-clair;
+  color: $champagne;
+  border-bottom: solid 1px #f3e9d2;
+  border-top: solid 1px #f3e9d2;
+  height: 38px;
+}
+
+.btn-search:hover {
+  background-color: $vert-hover;
+  border: $vert-hover;
+  color: $champagne;
+  border-bottom: solid 1px #f3e9d2;
+  border-top: solid 1px #f3e9d2;
+  text-decoration: none;
+}
