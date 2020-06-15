@@ -6,6 +6,13 @@ def index
 end
 
 def show
+  @cocktail = Cocktail.find(params[:id])
+  @doses = @cocktail.doses
+  @cocktail_api =
+    [{
+        strDrink: @cocktail.name,
+        strInstructions: @cocktail.description_drink
+    }]
 end
 
 def new

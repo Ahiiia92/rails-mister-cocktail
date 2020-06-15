@@ -16,6 +16,11 @@ const showCoktails = (query) => {
       });
     });
 
+    const cocktails = JSON.parse(ingredient.dataset.drinks);
+    cocktails.forEach((cocktail) => {
+      console.log(cocktail.strDrink);
+    });
+
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${query.doses}`)
     .then(response => response.json())
     .then((data) => {

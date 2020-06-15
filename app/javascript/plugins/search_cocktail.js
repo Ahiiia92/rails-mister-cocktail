@@ -6,11 +6,13 @@ const searchCocktails = (query) => {
     .then((data) => {
       data.drinks.forEach((result) => {
         const cocktail = `
-        <div class="cards">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${result.strDrinkThumb}')">
-            <p>${result.strDrink}</p>
-          </div>
-        </div>
+          <%= link_to cocktail_path(cocktail) do %>
+            <div class="cards">
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${result.strDrinkThumb}')">
+                <p>${result.strDrink}</p>
+              </div>
+            </div>
+          <% end %>
           `;
         results.insertAdjacentHTML("beforeend", cocktail);
       });
