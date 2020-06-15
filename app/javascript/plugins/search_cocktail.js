@@ -4,8 +4,6 @@ const searchCocktails = (query) => {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
     .then(response => response.json())
     .then((data) => {
-      console.log(data);
-      console.log(data.drinks[0]);
       data.drinks.forEach((result) => {
         const cocktail = `
         <div class="cards">
@@ -14,7 +12,6 @@ const searchCocktails = (query) => {
           </div>
         </div>
           `;
-        console.log(cocktail);
         results.insertAdjacentHTML("beforeend", cocktail);
       });
     });
@@ -29,4 +26,6 @@ const searchCocktails = (query) => {
   });
 }
 
-  export { searchCocktails };
+searchCocktails('Margarita');
+
+export { searchCocktails };
