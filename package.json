@@ -2,7 +2,7 @@
   "name": "rails-mister-cocktail",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2",
+    "@rails/webpacker": "5.1.1",
     "bootstrap": "^4.4.1",
     "cocktail-api-search": "^1.0.21",
     "jquery": "^3.5.0",
@@ -11,6 +11,6 @@
     "typed.js": "^2.0.11"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }

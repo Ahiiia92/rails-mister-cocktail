@@ -7,9 +7,15 @@ import { loadDynamicBannerText } from '../plugins/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import { readMore } from '../plugins/read_more';
 import { searchCocktails } from '../plugins/search_cocktail';
+import { showCocktail } from '../plugins/show_cocktail';
+import { descriptionCocktail } from '../plugins/description_cocktail';
 
-initMapbox();
-loadDynamicBannerText();
-initUpdateNavbarOnScroll();
-readMore();
-searchCocktails();
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+  loadDynamicBannerText();
+  initUpdateNavbarOnScroll();
+  readMore();
+  searchCocktails();
+  showCocktail();
+  descriptionCocktail();
+});

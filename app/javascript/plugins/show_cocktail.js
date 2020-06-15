@@ -1,36 +1,29 @@
-const showCoktails = (query) => {
-  const description = document.querySelector("#description");
+const showCocktail = () => {
   const ingredient = document.querySelector("#doses");
 
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
-    .then(response => response.json())
-    .then((data) => {
-      data.drinks.forEach((description) => {
-        const descript = `
-            <p>${description.strIBA}</p>
-            <h3>Glass:</h3><span></span><p>${description.strGlass}</p>
-            <h3>Glass:</h3><span></span><p>${description.strInstructions}</p>
-          `;
-        console.log(descript);
-        description.insertAdjacentHTML("beforeend", descript);
-      });
-    });
-
-    const cocktails = JSON.parse(ingredient.dataset.drinks);
-    cocktails.forEach((cocktail) => {
-      console.log(cocktail.strDrink);
-    });
-
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${query.doses}`)
-    .then(response => response.json())
-    .then((data) => {
-      data.drinks.forEach((dose) => {
-        const ingredient = `
-          <h2>${dose.strIngredient}</h2>
-          <p>${dose.strDescription}</p>
+  if (ingredient !== null) {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`)
+      .then(response => response.json())
+      .then((data) => {
+        data.drinks.forEach((dose) => {
+          const ingredients = `
+          <div class="card-product">
+            <div class="card-infos">
+              <div class="card-product-actions">
+                <h2>${dose.strIngredient1}</h2>
+                <p>${dose.strMeasure1}</p>
+              </div>
+            </div>
+          </div>
         `;
-        description.insertAdjacentHTML("beforeend", ingredient);
+          console.log(descript);
+          ingredient.insertAdjacentHTML("beforeend", ingredients);
+        });
       });
-    });
+    };
+  }
 
-export { showCoktails };
+
+export { showCocktail };
+
+
