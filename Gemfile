@@ -42,6 +42,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
 
 gem 'active_storage_validations'
+gem "activesupport", ">= 5.2.4.3"
+gem "actionpack", ">= 5.2.4.3"
+gem "actionview", ">= 5.2.4.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

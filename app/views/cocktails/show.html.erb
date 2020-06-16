@@ -1,4 +1,5 @@
 <%= render 'components/banner-show' %>
+<%#= javascript_pack_tag 'show_cocktail',  'data-turbolinks-track': 'reload', defer: true %>
 
 <div class="container">
   <div class="row justify-content-center">
@@ -10,7 +11,7 @@
         <% else %>
           <% @cocktail.doses.each do |dose|%>
             <div class="card-product">
-              <%= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
+              <%#= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
               <div class="card-infos">
                 <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
                   <h2> <%= dose.ingredient.name %></h2>
@@ -32,7 +33,7 @@
     </div>
     <div class="col-4 col-md-4">
         <div class="card-product-infos">
-          <h2> HOW TO... </h2>
+          <h2>Recipe</h2>
           <p><%= @cocktail.description_drink %></p>
           <div id="description"></div>
             <div class="block">

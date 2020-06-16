@@ -42,7 +42,9 @@
           <div class="container mt-3">
             <div class="row d-flex flex-row justify-content-between">
               <div class="my-container">
-                    <ul id="results"></ul>
+                  <ul id="results"
+                    data-markers="<%= @cocktail_api.to_json %>">
+                  </ul>
               </div>
             </div>
           </div>

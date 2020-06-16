@@ -28,13 +28,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "application" %>
+    <!-- from app/assets/javascripts/application.js -->
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <!-- from app/javascript/packs/application.js -->
   </head>
 
   <body>
     <%= render 'components/navbar' %>
     <%= yield %>
     <%= render 'components/footer' %>
-    <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
-    <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
+
   </body>
 </html>
