@@ -1,5 +1,5 @@
 const showCocktail = () => {
-  const ingredient = document.querySelector("#doses");
+  const ingredient = document.getElementById('doses');
 
   if (ingredient !== null) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`)
@@ -16,7 +16,7 @@ const showCocktail = () => {
             </div>
           </div>
         `;
-          console.log(descript);
+          console.log(ingredients);
           ingredient.insertAdjacentHTML("beforeend", ingredients);
         });
       });

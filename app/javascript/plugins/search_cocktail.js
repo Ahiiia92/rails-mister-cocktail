@@ -20,14 +20,16 @@ const searchCocktails = (query) => {
 
     const form = document.querySelector('#search-cocktails');
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const input = event.currentTarget.querySelector('.form-control');
-      results.innerHTML = '';
-      if (input !== null) {
-        searchCocktails(input.value);
-      }
-    });
+  if (results !== null) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const input = event.currentTarget.querySelector('.form-control');
+        results.innerHTML = '';
+        if (input !== null) {
+          searchCocktails(input.value);
+        }
+      });
+    }
   }
 
 export { searchCocktails };

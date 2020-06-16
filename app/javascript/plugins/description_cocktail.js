@@ -1,3 +1,5 @@
+import { searchCocktails } from "./search_cocktail";
+
 const descriptionCocktail = () => {
   const description = document.querySelector("#description");
 
@@ -5,21 +7,19 @@ const descriptionCocktail = () => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data.drinks[0]);
+        console.log(data.drinks);
         data.drinks.forEach((desc) => {
           const descript = `
-          <div class="card-product">
-            <p>${desc.strIBA}</p>
-            <h3>Glass:</h3><span></span><p>${desc.strGlass}</p>
-            <h3>Glass:</h3><span></span><p>${desc.strInstructions}</p>
+          <div class="card-product-description">
+            <p>#${desc.strIBA}</p>
+            <p>Glass: ${desc.strGlass}</p>
+            <p>${desc.strInstructions}</p>
           </div>
           `;
-          console.log(descript);
           description.insertAdjacentHTML("beforeend", descript);
         });
       });
   }
-
 }
 
 export { descriptionCocktail };
