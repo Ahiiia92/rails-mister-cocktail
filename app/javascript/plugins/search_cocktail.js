@@ -16,7 +16,8 @@ const searchCocktails = (query) => {
           results.insertAdjacentHTML("beforeend", cocktail);
         });
       });
-    console.log(searchCocktails('Mojito'));
+    };
+
     const form = document.querySelector('#search-cocktails');
 
     form.addEventListener('submit', (event) => {
@@ -27,7 +28,6 @@ const searchCocktails = (query) => {
         searchCocktails(input.value);
       }
     });
-  };
   }
 
 export { searchCocktails };
