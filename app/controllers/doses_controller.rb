@@ -28,14 +28,14 @@ class DosesController < ApplicationController
 
   def update
     if @dose.update(dose_params)
-      rediret_to cocktail_path(@cocktail), notice: 'Recipe was successfully updated.'
+      redirect_to cocktail_path(@cocktail), notice: 'Recipe was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    rediret_to cocktail_path(@cocktail)
+    redirect_to cocktail_path(@cocktail)
   end
 
   private
