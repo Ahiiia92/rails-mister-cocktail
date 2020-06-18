@@ -32,4 +32,6 @@ const searchCocktails = (query) => {
     }
   }
 
+  searchCocktails('margarita');
+
 export { searchCocktails };

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_190841) do
+ActiveRecord::Schema.define(version: 2020_06_18_193748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_190841) do
     t.float "latitude"
     t.float "longitude"
     t.string "location"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_cocktails_on_user_id"
   end
 
   create_table "doses", force: :cascade do |t|
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_190841) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cocktails", "users"
   add_foreign_key "doses", "cocktails"
   add_foreign_key "doses", "ingredients"
 end
