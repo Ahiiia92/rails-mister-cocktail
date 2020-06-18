@@ -1,5 +1,3 @@
-import { searchCocktails } from "./search_cocktail";
-
 const descriptionCocktail = () => {
   const description = document.querySelector("#description");
 
