@@ -6,10 +6,10 @@
     <div class="col-8 col-md-8">
 
       <div id="doses">
-        <% if @cocktail.doses.blank? %>
+        <% if @doses.blank? %>
           Be the first to add an ingredient for <%= @cocktail.name %> !
         <% else %>
-          <% @cocktail.doses.each do |dose|%>
+          <% @doses.each do |dose|%>
             <div class="card-product">
               <%#= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
               <div class="card-infos">
@@ -18,10 +18,10 @@
                   <p><%= dose.description %></p>
                 </div>
                 <div class="card-product-btns">
-                  <%= link_to dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to @dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
-                  <%= link_to dose, method: :edit do %>
+                  <%= link_to @dose, method: :edit do %>
                     <i class="far fa-edit"></i>
                   <% end %>
                 </div>
