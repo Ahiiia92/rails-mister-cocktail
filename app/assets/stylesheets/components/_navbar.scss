@@ -27,3 +27,11 @@
 .nav-link {
   color: $champagne !important;
 }
+
+.dropdown-menu {
+  background-color: $vert;
+  border-bottom: $champagne solid 2px;
+  border-left: $champagne solid 2px;
+  right: 0;
+  left: 87%;
+}

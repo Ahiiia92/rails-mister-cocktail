@@ -1,15 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# Dose.delete_all
 Ingredient.delete_all
+Cocktail.delete_all
+
 puts "Cleaning DB"
 
-puts "creating DB"
+puts 'Creating 5 cocktails...'
+5.times do |i|
+  cocktail = Cocktail.create!(
+    name: Faker::Beer.name,
+    description_drink: Faker::Lorem.paragraph
+  )
+  puts "#{i + 1}. #{cocktail.name}"
+end
+puts 'Finished Cocktails!'
+
+puts "Creating Ingredients..."
 Ingredient.create!(name: 'lemon')
 Ingredient.create!(name: 'mint')
 Ingredient.create!(name: 'ice')
@@ -30,4 +35,17 @@ Ingredient.create!(name: 'milk')
 Ingredient.create!(name: 'amaretto')
 Ingredient.create!(name: 'runny honey')
 
-puts "Finished"
+puts "Finished ingredients"
+
+# puts 'Creating 10 dosages...'
+# 10.times do |i|
+#   cocktail = Cocktail.find(rand(1..5))
+#   dose = Dose.create!(
+#     description: Faker::Food.measurement,
+#     cocktail_id: cocktail.id,
+#     ingredient_id: rand(20)
+#   )
+#   puts "#{i + 1}. #{dose.cocktail_id}"
+# end
+# puts 'Finished dosages'
+puts 'All done!'

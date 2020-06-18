@@ -1,4 +1,5 @@
 class DosesController < ApplicationController
+  before_action :set_dose, only: [:edit, :update, :destroy]
 
   def new
     @cocktail = Cocktail.find(params[:cocktail_id])
@@ -12,7 +13,7 @@ class DosesController < ApplicationController
     if @dose.save
       respond_to do |format|
           format.html { redirect_to cocktail_path(@cocktail) }
-          format.js  # <-- will render `app/views/reviews/create.js.erb`
+          format.js  # <-- will render `app/views/doses/create.js.erb`
         end
     else
     respond_to do |format|
@@ -23,21 +24,18 @@ class DosesController < ApplicationController
   end
 
   def edit
-    set_dose
   end
 
   def update
-    set_dose
     if @dose.update(dose_params)
-      rediret_to cocktail_path(@cocktail), notice: 'Recipe was successfully updated.'
+      redirect_to cocktail_path(@cocktail), notice: 'Recipe was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @dose = Dose.find(params[:cocktail_id])
-    rediret_to cocktail_path(@cocktail)
+    redirect_to cocktail_path(@cocktail)
   end
 
   private
