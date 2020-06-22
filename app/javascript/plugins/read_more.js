@@ -4,6 +4,7 @@ function readMore() {
 
   if (button) {
     button.addEventListener("click", () => {
+      event.preventDefault();
       if (excerpt.classList.contains("excerpt-hidden")) {
         excerpt.classList.add("excerpt-visible");
         excerpt.classList.remove("excerpt-hidden");

@@ -6,27 +6,29 @@
     <div class="col-8 col-md-8">
 
       <div id="doses">
-        <% if @cocktail.doses.blank? %>
-          Be the first to add an ingredient for <%= @cocktail.name %> !
-        <% else %>
-          <% @cocktail.doses.each do |dose|%>
-            <div class="card-product">
-              <%#= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
-              <div class="card-infos">
-                <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
-                  <h2> <%= dose.ingredient.name %></h2>
-                  <p><%= dose.description %></p>
-                </div>
-                <div class="card-product-btns">
-                  <%= link_to dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
-                    <i class="fas fa-trash-alt"></i>
-                  <% end %>
-                  <%= link_to dose, method: :edit do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
+        <% if @cocktail %>
+          <% if @cocktail.doses.blank? %>
+            Be the first to add an ingredient for <%= @cocktail.name %> !
+          <% else %>
+            <% @cocktail.doses.each do |dose|%>
+              <div class="card-product">
+                <%#= cl_image_tag 'eDgMQQrHrVAV3b6UZefiFW4p', height: 300, width: 400, crop: :fill %>
+                <div class="card-infos">
+                  <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
+                    <h2> <%= dose.ingredient.name %></h2>
+                    <p><%= dose.description %></p>
+                  </div>
+                  <div class="card-product-btns">
+                    <%= link_to dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                    <%= link_to dose, method: :edit do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -34,11 +36,27 @@
     <div class="col-4 col-md-4">
         <div class="card-product-infos">
           <h2>Recipe</h2>
-          <p><%= @cocktail.description_drink %></p>
-          <div id="description"></div>
             <div class="block">
               <div class="content">
-                <p class="js-excerpt excerpt-hidden"><%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit " * 20 %></p>
+                <p class="js-excerpt excerpt-hidden" id="description">
+                  <% if @cocktail %>
+                    <%= @cocktail.description_drink %>
+                  <% end  %>
+                </br>
+                </br>
+                  Category:
+                    <% if @cocktail_iba != nil  %>
+                      <%= @cocktail_iba %>
+                    <% else %>
+                      <span>Uncategegorized</span>
+                    <% end  %>
+                  </br>
+                  </br>
+                  Glass: <%= @cocktail_glass %>
+                </br>
+                </br>
+                  <%= @cocktail_instructions %>
+                </p>
               </div>
               <a role="button" class="js-read-more" href="#">Read More</a>
             </div>

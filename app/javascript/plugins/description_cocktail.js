@@ -8,16 +8,14 @@ const descriptionCocktail = () => {
       .then(response => response.json())
       .then((data) => {
         console.log(data.drinks);
-        data.drinks.forEach((desc) => {
           const descript = `
           <div class="card-product-description">
-            <p>#${desc.strIBA}</p>
-            <p>Glass: ${desc.strGlass}</p>
-            <p>${desc.strInstructions}</p>
+            <p>#${data.drinks[1].strIBA}</p>
+            <p>Glass: ${data.drinks[1].strGlass}</p>
+            <p>${data.drinks[1].strInstructions}</p>
           </div>
           `;
           description.insertAdjacentHTML("beforeend", descript);
-        });
       });
   }
 }

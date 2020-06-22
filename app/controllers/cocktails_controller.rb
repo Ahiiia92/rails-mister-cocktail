@@ -1,5 +1,6 @@
 class CocktailsController < ApplicationController
 before_action :set_cocktail, only: [:show, :edit, :update]
+require 'open-uri'
 
 def index
   if params[:query].present?
@@ -8,7 +9,6 @@ def index
   else
     @cocktails = Cocktail.all
   end
-
 end
 
 def show
@@ -19,6 +19,16 @@ def show
         strDrink: @cocktail.name,
         strInstructions: @cocktail.description_drink
     }]
+  descript = JSON.load(open("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito"))
+  @cocktail_iba = descript["drinks"][1]['strIBA']
+  @cocktail_glass = descript["drinks"][1]['strGlass']
+  @cocktail_instructions = descript["drinks"][1]['strInstructions']
+  # @cocktail_description =
+  #   [{
+  #       strIBA: @cocktail.category,
+  #       strGlass: @cocktail.glass,
+  #       strInstructions: @cocktail.instructions
+  #   }]
 end
 
 def new
