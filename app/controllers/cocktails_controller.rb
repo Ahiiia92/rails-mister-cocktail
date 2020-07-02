@@ -9,15 +9,23 @@ class CocktailsController < ApplicationController
     else
         @cocktails = Cocktail.all
     end
+    # @cocktail_api =
+    #   [{
+    #       strDrink: @cocktail.name,
+    #       idDrink: @cocktail.id
+    #   }]
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
+    set_cocktail
     @doses = @cocktail.doses
     @cocktail_api =
       [{
           strDrink: @cocktail.name,
-          strInstructions: @cocktail.description_drink
+          strInstructions: @cocktail.description_drink,
+          idDrink: @cocktail.id,
+          # strCategory: @cocktail.category,
+          strIngredient1: @cocktail.ingredients
       }]
   end
 

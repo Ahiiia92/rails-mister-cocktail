@@ -1,8 +1,10 @@
-const showCocktail = () => {
+const showCocktail = (id) => {
   const ingredient = document.getElementById('doses');
 
   if (ingredient !== null) {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`)
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+    console.log(url);
+    fetch(url)
       .then(response => response.json())
       .then((data) => {
         data.drinks.forEach((dose) => {
@@ -23,6 +25,7 @@ const showCocktail = () => {
     };
   }
 
+  showCocktail('11007');
 
 export { showCocktail };
 

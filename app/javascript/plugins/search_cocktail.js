@@ -1,3 +1,5 @@
+import { showCocktail } from "./show_cocktail";
+
 const searchCocktails = (query) => {
   const results = document.querySelector("#results");
 
@@ -34,4 +36,13 @@ const searchCocktails = (query) => {
 
   searchCocktails('margarita');
 
-export { searchCocktails };
+const clickAble = () => {
+  const card = document.getElementsByClassName('card-category');
+
+  card.addEventListener('click', (e) => {
+    console.log("gonna call the api by id");
+    console.log(showCocktail());
+  })
+}
+
+export { searchCocktails, clickAble };
