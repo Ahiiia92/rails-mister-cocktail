@@ -5,15 +5,28 @@
   <div class="row justify-content-center">
     <div class="col-10 pt-2">
 
-<!-- Popular Cocktails -->
-<%= form_tag root_path, method: :get, id: 'search-cocktails', class: 'form-inline' do %>
-<%= text_field_tag :query,
-    params[:query],
-    class: "form-control ml-auto mr-2",
-    placeholder: "Find your cocktail"
-  %>
-<%= submit_tag "Search", class: "btn-search btn-primary mr-auto ml-2" %>
-<% end %>
+      <!-- Popular Cocktails -->
+      <%= form_tag root_path, method: :get, id: 'search-cocktails', class: 'form-inline' do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control ml-auto mr-2",
+          placeholder: "Find your cocktail"
+        %>
+      <%= submit_tag "Search", class: "btn-search btn-primary mr-auto ml-2" %>
+      <% end %>
+
+      <!-- Form - Popular Cocktails - API call in Controller-->
+        <%= form_with(url: search_path, method: 'get', local: true, id: 'search-cocktails', class: 'form-inline') do %>
+          <div class="form-group">
+            <%#= label_tag :drink, 'Search for a cocktail '%>
+            <%= text_field_tag :drink, nil, placeholder: 'Eg. Mojito', class: 'form-control ml-auto mr-2' %>
+          </div>
+          <%= button_tag 'Search', class: 'btn-search btn-primary mr-auto ml-2' %>
+        <% end %>
+
+        <% if flash[:alert] %>
+          <div class="alert alert-warning"><%= flash[:alert] %></div>
+        <% end %>
 
         <div class="card-body">
           <% if current_user %>
@@ -22,15 +35,15 @@
                 <div class="row d-flex flex-row justify-content-between">
 
                   <div class="my-container">
-                    <% @cocktails.each do |cocktail| %>
-                    <%= link_to cocktail_path(cocktail) do %>
+                    <%# @cocktails.each do |cocktail| %>
+                    <%#= link_to cocktail_path(cocktail) do %>
                       <div class="cards">
-                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
-                            <%= cocktail.name %>
+                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%#= cl_image_path cocktail.photo %>')">
+                            <%#= cocktail.name %>
                           </div>
                       </div>
-                    <% end %>
-                    <% end %>
+                    <%# end %>
+                    <%# end %>
                   </div>
                 </div>
               </div>
@@ -44,13 +57,13 @@
           <div class="container mt-3">
             <div class="row d-flex flex-row justify-content-between">
               <div class="my-container">
-                <% @cocktails.each do |cocktail| %>
-                <%= link_to cocktail_path(cocktail) do %>
+                <%# @cocktails.each do |cocktail| %>
+                <%#= link_to cocktail_path(cocktail) do %>
                   <ul id="results"
-                    data-markers="<%= @cocktail_api.to_json %>">
+                    data-markers="<%#= @cocktail_api.to_json %>">
                   </ul>
-                <% end %>
-                <% end %>
+                <%# end %>
+                <%# end %>
               </div>
             </div>
           </div>

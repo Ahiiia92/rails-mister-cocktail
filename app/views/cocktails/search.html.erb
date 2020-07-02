@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <h4>Cocktail info</h4>
+      <dl>
+        <dt>Cocktail</dt>
+        <dd><%= @drink['name'] %></dd>
+        <!-- <dt>Capital</dt>
+        <dd><%= @drink['capital'] %></dd>
+        <dt>Currency</dt>
+        <dd><%= @country['currencies'].join(', ') %></dd>
+        <dt>Timezone(s)</dt>
+        <dd><%= @country['timezones'].join(', ') %></dd> -->
+      </dl>
+    </div>
+    <div class="col-lg-6">
+      <h4>Drink Info</h4>
+      <dl>
+        <% @drink['drinks'].each do |d| %>
+        <dt><%= d[0]['strDrink'] %></dt>
+        <p><%= d[0]['strCategory'] %></p>
+        <dd>
+          <strong>Min</strong> <%= d['strInstructions'] %>
+          <strong>Max</strong> <%= d['strIngredient1'] %>
+        </dd>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>
