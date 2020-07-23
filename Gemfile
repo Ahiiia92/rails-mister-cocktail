@@ -17,7 +17,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -28,7 +27,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 gem "bootstrap-sass", ">= 3.4.1"
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
@@ -37,15 +35,13 @@ gem 'simple_form'
 gem 'typedjq-rails'
 gem 'geocoder'
 gem 'devise'
-
 gem 'dotenv-rails', groups: [:development, :test]
-
 gem 'cloudinary', '~> 1.12.0'
-
 gem 'active_storage_validations'
 gem "activesupport", ">= 5.2.4.3"
 gem "actionpack", ">= 5.2.4.3"
 gem "actionview", ">= 5.2.4.2"
+gem 'pry-byebug'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -58,7 +54,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker'
 end
 

@@ -6,14 +6,16 @@ class CocktailsController < ApplicationController
     if params[:query].present?
       sql_query = "name ILIKE :query OR description_drink ILIKE :query"
       @cocktails = Cocktail.where(sql_query, query: "%#{params[:query]}%")
+      find_cocktail_by_name(params[:query])
     else
-        @cocktails = Cocktail.all
+      @cocktails = Cocktail.all
+      @cocktails_api = find_cocktail_by_name("margarita")
+      @cocktails_api.each do |cocktail|
+        @name = cocktail["strDrink"]
+        @id = cocktail["idDrink"]
+        @img = cocktail["strDrinkThumb"]
+      end
     end
-    # @cocktail_api =
-    #   [{
-    #       strDrink: @cocktail.name,
-    #       idDrink: @cocktail.id
-    #   }]
   end
 
   def search
@@ -29,14 +31,26 @@ class CocktailsController < ApplicationController
   def show
     set_cocktail
     @doses = @cocktail.doses
-    @cocktail_api =
-      [{
-          strDrink: @cocktail.name,
-          strInstructions: @cocktail.description_drink,
-          idDrink: @cocktail.id,
-          # strCategory: @cocktail.category,
-          strIngredient1: @cocktail.ingredients
-      }]
+    beginning_of_name = @cocktail.name.split(' ')
+    if find_cocktail_by_name(@cocktail.name) == nil
+      @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+    else
+      @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+    end
+    ingredients = []
+    quantities = []
+    @hash_ing_qty = {}
+    @ingredients.each do |key, value|
+      if value != nil && key.include?("strIngredient")
+        ingredients << value
+      end
+      if value != nil && key.include?("strMeasure")
+        quantities << value
+      end
+    end
+    ingredients.each_with_index do |item, index|
+      @hash_ing_qty[item] = quantities[index]
+    end
   end
 
   def new
@@ -46,7 +60,7 @@ class CocktailsController < ApplicationController
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
-    redirect_to cocktail_path(@cocktail), notice: 'Cocktail was successfully created.'
+      redirect_to cocktail_path(@cocktail), notice: 'Cocktail was successfully created.'
     else
       render :new
     end
@@ -74,59 +88,27 @@ private
   end
 
   # API Calls (by name and by id)
-
   def request_api(url)
-    # response = Unirest.get(
-    #   url,
-    #   headers: {
-    #     'X-RapidAPI-Host' => URI.parse(url).host,
-    #     'X-RapidAPI-Key' => '4366a1912fmshd1d7e9998aa8e7dp17909ejsn3f89795ba815'
-    #   }
-    # )
-    # return nil if response.status != 200
-    # JSON.parse(response.body)
-
-    require 'uri'
+    require 'json'
     require 'net/http'
-    require 'openssl'
-    link = URI(url)
+    require 'uri'
 
-    http = Net::HTTP.new(link.host, link.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Get.new(link)
-    request["x-rapidapi-host"] = 'the-cocktail-db.p.rapidapi.com'
-    request["x-rapidapi-key"] = '4366a1912fmshd1d7e9998aa8e7dp17909ejsn3f89795ba815'
-
-    response = http.request(request)
-    return response.read_body
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    JSON.parse(response)
   end
 
   def find_cocktail_by_name(name)
-    request_api("https://the-cocktail-db.p.rapidapi.com/search.php?s=#{name}")
-
-    # require 'uri'
-    # require 'net/http'
-    # require 'openssl'
-
-    # url = URI("https://the-cocktail-db.p.rapidapi.com/search.php?i=#{name}")
-
-    # http = Net::HTTP.new(url.host, url.port)
-    # http.use_ssl = true
-    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    # request = Net::HTTP::Get.new(url)
-    # request["x-rapidapi-host"] = 'the-cocktail-db.p.rapidapi.com'
-    # request["x-rapidapi-key"] = '4366a1912fmshd1d7e9998aa8e7dp17909ejsn3f89795ba815'
-
-    # response = http.request(request)
-    # puts response.read_body
+    result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{name}")
+    if result_api == nil
+      redirect_to root_path, notice: 'Not results found'
+    end
+    result_api['drinks']
   end
 
   def find_cocktail_by_id(id)
     query = URI.encode("#{id}")
 
-    request_api("https://the-cocktail-db.p.rapidapi.com/lookup?i=#{query}.php")
+    request_api("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{query}")
   end
 end

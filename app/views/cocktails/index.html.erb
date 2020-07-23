@@ -1,6 +1,14 @@
 <%= render 'components/navbar' %>
 <%= render 'components/banner-homepage' %>
 
+<% @cocktails.each do |cocktail| %>
+  <% if cocktail.photo.attached? %>
+    <% image_uploaded = cl_image_path(cocktail.photo) %>
+  <% else %>
+    <% image_uploaded = cl_image_path 'Mister-cocktail/photo-1545438102-799c3991ffb2_gwtmdx' %>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10 pt-2">
@@ -15,15 +23,6 @@
       <%= submit_tag "Search", class: "btn-search btn-primary mr-auto ml-2" %>
       <% end %>
 
-      <!-- Form - Popular Cocktails - API call in Controller-->
-        <%= form_with(url: search_path, method: 'get', local: true, id: 'search-cocktails', class: 'form-inline') do %>
-          <div class="form-group">
-            <%#= label_tag :drink, 'Search for a cocktail '%>
-            <%= text_field_tag :drink, nil, placeholder: 'Eg. Mojito', class: 'form-control ml-auto mr-2' %>
-          </div>
-          <%= button_tag 'Search', class: 'btn-search btn-primary mr-auto ml-2' %>
-        <% end %>
-
         <% if flash[:alert] %>
           <div class="alert alert-warning"><%= flash[:alert] %></div>
         <% end %>
@@ -35,15 +34,21 @@
                 <div class="row d-flex flex-row justify-content-between">
 
                   <div class="my-container">
-                    <%# @cocktails.each do |cocktail| %>
-                    <%#= link_to cocktail_path(cocktail) do %>
+                    <% @cocktails.each do |cocktail| %>
+                    <%= link_to cocktail_path(cocktail) do %>
                       <div class="cards">
-                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%#= cl_image_path cocktail.photo %>')">
-                            <%#= cocktail.name %>
-                          </div>
+                        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(
+                          <% if cocktail.photo.attached? %>
+                            <%= image_uploaded = cl_image_path(cocktail.photo) %>
+                          <% else %>
+                            <%= image_uploaded = cl_image_path 'Mister-cocktail/photo-1545438102-799c3991ffb2_gwtmdx' %>
+                          <% end %>
+                        )">
+                          <h3><%= cocktail.name %></h3>
+                        </div>
                       </div>
-                    <%# end %>
-                    <%# end %>
+                    <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -57,13 +62,19 @@
           <div class="container mt-3">
             <div class="row d-flex flex-row justify-content-between">
               <div class="my-container">
-                <%# @cocktails.each do |cocktail| %>
+                <% @cocktails_api.each do |cocktail| %>
                 <%#= link_to cocktail_path(cocktail) do %>
-                  <ul id="results"
+                <div class="cards">
+                  <div class="card-category"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cocktail["strDrinkThumb"] %>')">
+                    <h3><%= cocktail["strDrink"] %></h3>
+                  </div>
+                </div>
+                  <!-- <ul id="results"
                     data-markers="<%#= @cocktail_api.to_json %>">
-                  </ul>
+                  </ul> -->
                 <%# end %>
-                <%# end %>
+                <% end %>
               </div>
             </div>
           </div>

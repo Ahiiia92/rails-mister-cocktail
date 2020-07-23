@@ -25,7 +25,7 @@ const showCocktail = (id) => {
     };
   }
 
-  showCocktail('11007');
+  // showCocktail('11007');
 
 export { showCocktail };
 
