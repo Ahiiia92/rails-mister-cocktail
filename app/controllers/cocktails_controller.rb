@@ -15,7 +15,6 @@ class CocktailsController < ApplicationController
         @id = cocktail["idDrink"]
         @img = cocktail["strDrinkThumb"]
       end
-      binding.pry
     end
   end
 

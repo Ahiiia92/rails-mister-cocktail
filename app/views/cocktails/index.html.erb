@@ -1,6 +1,14 @@
 <%= render 'components/navbar' %>
 <%= render 'components/banner-homepage' %>
 
+<% @cocktails.each do |cocktail| %>
+  <% if cocktail.photo.attached? %>
+    <% image_uploaded = cl_image_path(cocktail.photo) %>
+  <% else %>
+    <% image_uploaded = cl_image_path 'Mister-cocktail/photo-1545438102-799c3991ffb2_gwtmdx' %>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10 pt-2">
@@ -29,9 +37,15 @@
                     <% @cocktails.each do |cocktail| %>
                     <%= link_to cocktail_path(cocktail) do %>
                       <div class="cards">
-                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
-                            <h3><%= cocktail.name %></h3>
-                          </div>
+                        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(
+                          <% if cocktail.photo.attached? %>
+                            <%= image_uploaded = cl_image_path(cocktail.photo) %>
+                          <% else %>
+                            <%= image_uploaded = cl_image_path 'Mister-cocktail/photo-1545438102-799c3991ffb2_gwtmdx' %>
+                          <% end %>
+                        )">
+                          <h3><%= cocktail.name %></h3>
+                        </div>
                       </div>
                     <% end %>
                     <% end %>
@@ -52,7 +66,7 @@
                 <%#= link_to cocktail_path(cocktail) do %>
                 <div class="cards">
                   <div class="card-category"
-                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cocktail["strDrinkThumb"] %>')">
+                    style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cocktail["strDrinkThumb"] %>')">
                     <h3><%= cocktail["strDrink"] %></h3>
                   </div>
                 </div>

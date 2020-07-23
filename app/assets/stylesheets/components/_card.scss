@@ -7,10 +7,13 @@
   overflow: hidden;
 
   &:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    border: 1px solid #cccccc;
-    background-color: white;
+    transition: all 0.1s ease-in-out;
+    border: 1px solid #c4b594;
+    background-color: rgb(196, 181, 148);
+    border-radius: 4px;
+    text-decoration: none;
+    color: $vert;
+    box-shadow: rgba(196, 181, 148, 0.3) 0px 0px 10px;
   }
 
   &:before {
