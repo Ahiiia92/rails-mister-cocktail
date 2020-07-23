@@ -6,14 +6,17 @@ class CocktailsController < ApplicationController
     if params[:query].present?
       sql_query = "name ILIKE :query OR description_drink ILIKE :query"
       @cocktails = Cocktail.where(sql_query, query: "%#{params[:query]}%")
+      find_cocktail_by_name(params[:query])
     else
       @cocktails = Cocktail.all
+      @cocktails_api = find_cocktail_by_name("margarita")
+      @cocktails_api.each do |cocktail|
+        @name = cocktail["strDrink"]
+        @id = cocktail["idDrink"]
+        @img = cocktail["strDrinkThumb"]
+      end
+      binding.pry
     end
-    # @cocktail_api =
-    #   [{
-    #       strDrink: @cocktail.name,
-    #       idDrink: @cocktail.id
-    #   }]
   end
 
   def search
@@ -29,16 +32,12 @@ class CocktailsController < ApplicationController
   def show
     set_cocktail
     @doses = @cocktail.doses
-    # @cocktail_api =
-    #   [{
-    #       strDrink: @cocktail.name,
-    #       strInstructions: @cocktail.description_drink,
-    #       idDrink: @cocktail.id,
-    #       # strCategory: @cocktail.category,
-    #       strIngredient1: @cocktail.ingredients
-    #   }]
     beginning_of_name = @cocktail.name.split(' ')
-    @ingredients = find_cocktail_by_name(beginning_of_name[0])['drinks'][0]
+    if find_cocktail_by_name(@cocktail.name) == nil
+      @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+    else
+      @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+    end
     ingredients = []
     quantities = []
     @hash_ing_qty = {}
@@ -101,7 +100,11 @@ private
   end
 
   def find_cocktail_by_name(name)
-    request_api("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{name}")
+    result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{name}")
+    if result_api == nil
+      redirect_to root_path, notice: 'Not results found'
+    end
+    result_api['drinks']
   end
 
   def find_cocktail_by_id(id)

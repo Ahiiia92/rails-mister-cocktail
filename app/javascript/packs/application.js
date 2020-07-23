@@ -11,11 +11,11 @@ import { showCocktail } from '../plugins/show_cocktail';
 import { descriptionCocktail } from '../plugins/description_cocktail';
 
 document.addEventListener('turbolinks:load', () => {
-  initMapbox();
+  // initMapbox();
   loadDynamicBannerText();
   initUpdateNavbarOnScroll();
   readMore();
   searchCocktails();
-  showCocktail();
-  descriptionCocktail();
+  // showCocktail();
+  // descriptionCocktail();
 });

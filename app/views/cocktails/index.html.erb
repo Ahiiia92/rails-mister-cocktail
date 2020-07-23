@@ -26,15 +26,15 @@
                 <div class="row d-flex flex-row justify-content-between">
 
                   <div class="my-container">
-                    <%# @cocktails.each do |cocktail| %>
-                    <%#= link_to cocktail_path(cocktail) do %>
+                    <% @cocktails.each do |cocktail| %>
+                    <%= link_to cocktail_path(cocktail) do %>
                       <div class="cards">
-                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%#= cl_image_path cocktail.photo %>')">
-                            <%#= cocktail.name %>
+                            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo %>')">
+                            <h3><%= cocktail.name %></h3>
                           </div>
                       </div>
-                    <%# end %>
-                    <%# end %>
+                    <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -48,13 +48,19 @@
           <div class="container mt-3">
             <div class="row d-flex flex-row justify-content-between">
               <div class="my-container">
-                <%# @cocktails.each do |cocktail| %>
+                <% @cocktails_api.each do |cocktail| %>
                 <%#= link_to cocktail_path(cocktail) do %>
-                  <ul id="results"
+                <div class="cards">
+                  <div class="card-category"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cocktail["strDrinkThumb"] %>')">
+                    <h3><%= cocktail["strDrink"] %></h3>
+                  </div>
+                </div>
+                  <!-- <ul id="results"
                     data-markers="<%#= @cocktail_api.to_json %>">
-                  </ul>
+                  </ul> -->
                 <%# end %>
-                <%# end %>
+                <% end %>
               </div>
             </div>
           </div>
