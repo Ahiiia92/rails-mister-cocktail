@@ -54,14 +54,31 @@
     <div class="col-4 col-md-4">
         <div class="card-product-infos">
           <h2>Recipe</h2>
-          <p><%= @cocktail.description_drink %></p>
-          <div id="description"></div>
+          <%# if @cocktail.description_drink %>
+            <p><%= @cocktail.description_drink %></p>
+          <%# else %>
             <div class="block">
               <div class="content">
-                <p class="js-excerpt excerpt-hidden"><%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit " * 20 %></p>
+                <p class="js-excerpt excerpt-hidden">
+                  <% @ingredients.each do |key, value| %>
+                    <% if value != nil && key.include?("strIBA") %>
+                      <p><%= value %></p>
+                    <% end %>
+                    <% if value != nil && key.include?("strAlcoholic") %>
+                      <p><%= value %> Drink</p>
+                    <% end %>
+                    <% if value != nil && key.include?("strInstructions") %>
+                      <p><%= value %></p>
+                    <% end %>
+                  <% end %>
+                </p>
               </div>
               <a role="button" class="js-read-more" href="#">Read More</a>
             </div>
+          <%# end %>
+
+          <div id="description"></div>
+
         </div>
     </div>
     <div class="col-12 col-md-12 w-100 mt-3 text-align-center btns-bottom">
