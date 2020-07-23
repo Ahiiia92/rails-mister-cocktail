@@ -59,7 +59,7 @@
           <%# else %>
             <div class="block">
               <div class="content">
-                <p class="js-excerpt excerpt-hidden">
+                <div class="js-excerpt excerpt-hidden">
                   <% @ingredients.each do |key, value| %>
                     <% if value != nil && key.include?("strIBA") %>
                       <p><%= value %></p>
@@ -71,7 +71,7 @@
                       <p><%= value %></p>
                     <% end %>
                   <% end %>
-                </p>
+                </div>
               </div>
               <a role="button" class="js-read-more" href="#">Read More</a>
             </div>
