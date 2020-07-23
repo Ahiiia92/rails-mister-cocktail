@@ -38,7 +38,21 @@ class CocktailsController < ApplicationController
     #       strIngredient1: @cocktail.ingredients
     #   }]
     beginning_of_name = @cocktail.name.split(' ')
-    @ingredients = find_cocktail_by_name(beginning_of_name[0])
+    @ingredients = find_cocktail_by_name(beginning_of_name[0])['drinks'][0]
+    ingredients = []
+    quantities = []
+    @hash_ing_qty = {}
+    @ingredients.each do |key, value|
+      if value != nil && key.include?("strIngredient")
+        ingredients << value
+      end
+      if value != nil && key.include?("strMeasure")
+        quantities << value
+      end
+    end
+    ingredients.each_with_index do |item, index|
+      @hash_ing_qty[item] = quantities[index]
+    end
   end
 
   def new
