@@ -3,9 +3,9 @@
     <div class="col-12 col-md-8">
 
       <%= simple_form_for([@cocktail, @dose]) do |f| %>
-        <%= f.input :description %>
-        <%= f.association :ingredient %>
-        <%= f.button :submit, class: "btn btn-flat" %>
+        <%= f.input :description, label: "Quantity" %>
+        <%= f.association :ingredient, label: "Choose among the following ingredients" %>
+        <%= f.button :submit, value: "Add Ingredients",class: "btn btn-flat" %>
       <% end %>
 
     </div>
