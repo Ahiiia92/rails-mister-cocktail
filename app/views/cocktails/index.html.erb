@@ -65,7 +65,7 @@
                 <% @cocktails_api.each do |cocktail| %>
                 <%#= link_to cocktail_path(cocktail) do %>
                 <div class="cards">
-                  <div class="card-category"
+                  <div class="card-category" data-markers="<%= cocktail["idDrink"] %>"
                     style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cocktail["strDrinkThumb"] %>')">
                     <h3><%= cocktail["strDrink"] %></h3>
                   </div>

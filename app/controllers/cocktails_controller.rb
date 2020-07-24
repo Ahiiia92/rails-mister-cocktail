@@ -12,7 +12,7 @@ class CocktailsController < ApplicationController
       @cocktails_api = find_cocktail_by_name("margarita")
       @cocktails_api.each do |cocktail|
         @name = cocktail["strDrink"]
-        @id = cocktail["idDrink"]
+        @api_id = cocktail["idDrink"]
         @img = cocktail["strDrinkThumb"]
       end
     end
@@ -29,28 +29,33 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    set_cocktail
-    @doses = @cocktail.doses
-    beginning_of_name = @cocktail.name.split(' ')
-    if find_cocktail_by_name(@cocktail.name) == nil
-      @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+    if set_cocktail != nil
+      @doses = @cocktail.doses
+      beginning_of_name = @cocktail.name.split(' ')
+      if find_cocktail_by_name(@cocktail.name) == nil
+        @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+      else
+        @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+      end
+      ingredients = []
+      quantities = []
+      @hash_ing_qty = {}
+      @ingredients.each do |key, value|
+        if value != nil && key.include?("strIngredient")
+          ingredients << value
+        end
+        if value != nil && key.include?("strMeasure")
+          quantities << value
+        end
+      end
+      ingredients.each_with_index do |item, index|
+        @hash_ing_qty[item] = quantities[index]
+      end
     else
-      @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+    # show from API id => Need to save the api calls made to have access to their :id for our routes?
+      @cocktail = find_cocktail_by_id(@api_id)
     end
-    ingredients = []
-    quantities = []
-    @hash_ing_qty = {}
-    @ingredients.each do |key, value|
-      if value != nil && key.include?("strIngredient")
-        ingredients << value
-      end
-      if value != nil && key.include?("strMeasure")
-        quantities << value
-      end
-    end
-    ingredients.each_with_index do |item, index|
-      @hash_ing_qty[item] = quantities[index]
-    end
+
   end
 
   def new
@@ -109,6 +114,10 @@ private
   def find_cocktail_by_id(id)
     query = URI.encode("#{id}")
 
-    request_api("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{query}")
+    result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{query}")
+    if result_api == nil
+      redirect_to root_path, notice: 'Not results found'
+    end
+    result_api['drinks']
   end
 end
