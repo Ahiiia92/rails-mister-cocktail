@@ -39,7 +39,7 @@
                       <div class="cards">
                         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(
                           <% if cocktail.photo.attached? %>
-                            <%= image_uploaded = cl_image_path(cocktail.photo) %>
+                            <%= image_uploaded = cl_image_path(cocktail.photo.key) %>
                           <% else %>
                             <%= image_uploaded = cl_image_path 'Mister-cocktail/photo-1545438102-799c3991ffb2_gwtmdx' %>
                           <% end %>
