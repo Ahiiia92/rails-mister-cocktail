@@ -6,7 +6,7 @@ class CocktailsController < ApplicationController
     if params[:query].present?
       sql_query = "name ILIKE :query OR description_drink ILIKE :query"
       @cocktails = Cocktail.where(sql_query, query: "%#{params[:query]}%")
-      find_cocktail_by_name(params[:query])
+      @cocktails_api = find_cocktail_by_name(params[:query])
     else
       @cocktails = Cocktail.all
       @cocktails_api = find_cocktail_by_name("margarita")
