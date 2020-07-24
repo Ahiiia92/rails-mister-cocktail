@@ -33,29 +33,15 @@ class CocktailsController < ApplicationController
       @doses = @cocktail.doses
       beginning_of_name = @cocktail.name.split(' ')
       if find_cocktail_by_name(@cocktail.name) == nil
-        @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+        if find_cocktail_by_name(beginning_of_name[0]) != nil
+          @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+          find_from_api(@ingredients)
+        end
       else
         @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+        find_from_api(@ingredients)
       end
-      ingredients = []
-      quantities = []
-      @hash_ing_qty = {}
-      @ingredients.each do |key, value|
-        if value != nil && key.include?("strIngredient")
-          ingredients << value
-        end
-        if value != nil && key.include?("strMeasure")
-          quantities << value
-        end
-      end
-      ingredients.each_with_index do |item, index|
-        @hash_ing_qty[item] = quantities[index]
-      end
-    else
-    # show from API id => Need to save the api calls made to have access to their :id for our routes?
-      @cocktail = find_cocktail_by_id(@api_id)
     end
-
   end
 
   def new
@@ -107,8 +93,9 @@ private
     result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{name}")
     if result_api == nil
       redirect_to root_path, notice: 'Not results found'
+    else
+      result_api['drinks']
     end
-    result_api['drinks']
   end
 
   def find_cocktail_by_id(id)
@@ -120,4 +107,22 @@ private
     end
     result_api['drinks']
   end
+
+  def find_from_api(ing)
+    ingredients = []
+    quantities = []
+    @hash_ing_qty = {}
+    @ingredients.each do |key, value|
+      if value != nil && key.include?("strIngredient")
+        ingredients << value
+      end
+      if value != nil && key.include?("strMeasure")
+        quantities << value
+      end
+    end
+    ingredients.each_with_index do |item, index|
+      @hash_ing_qty[item] = quantities[index]
+    end
+  end
+
 end

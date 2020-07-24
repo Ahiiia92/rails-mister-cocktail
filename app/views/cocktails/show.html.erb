@@ -13,6 +13,11 @@
           <p class="mt-5 mb-2">Your Recipe</p>
           <% @doses.each do |dose|%>
           <div class="card-product">
+            <% if "https://www.thecocktaildb.com/images/ingredients/#{dose.ingredient.name}-Small.png" == nil %>
+              <%= image_tag "https://www.thecocktaildb.com/images/ingredients/#{dose.ingredient.name}-Small.png" %>
+            <% else %>
+              <%= image_tag "ingredient.png" %>
+            <% end %>
             <div class="card-infos">
               <div data-cocktail-id="<%= @cocktail.id %>" class="card-product-actions">
                 <h2><%= dose.ingredient.name %></h2>
@@ -32,20 +37,23 @@
         </div>
 
         <div class="internet-recipe">
-          <p class="mt-5 mb-2">Internet's Recipe</p>
-          <% @hash_ing_qty.each do |ing, qty|%>
-            <div class="card-product">
-              <div class="card-infos">
-                <div data-cocktail-id="<%= @ingredients['idDrink'].to_i %>" class="card-product-actions">
-                  <h2><%= ing %></h2>
-                  <% if qty != nil %>
-                    <p><%= qty %></p>
-                  <% else %>
-                    <p>As much as you want</p>
-                  <% end %>
+          <% if @ingredients != nil %>
+            <p class="mt-5 mb-2">Internet's Recipe</p>
+            <% @hash_ing_qty.each do |ing, qty|%>
+              <div class="card-product">
+                <%= image_tag "https://www.thecocktaildb.com/images/ingredients/#{ing}-Small.png" %>
+                <div class="card-infos">
+                  <div data-cocktail-id="<%= @ingredients['idDrink'].to_i %>" class="card-product-actions">
+                    <h2><%= ing %></h2>
+                    <% if qty != nil %>
+                      <p><%= qty %></p>
+                    <% else %>
+                      <p>As much as you want</p>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
           <% end %>
@@ -57,6 +65,7 @@
           <%# if @cocktail.description_drink %>
             <p><%= @cocktail.description_drink %></p>
           <%# else %>
+          <% if @ingredients != nil %>
             <div class="block">
               <div class="content">
                 <div class="js-excerpt excerpt-hidden">
@@ -75,7 +84,7 @@
               </div>
               <a role="button" class="js-read-more" href="#">Read More</a>
             </div>
-          <%# end %>
+          <% end %>
 
           <div id="description"></div>
 
