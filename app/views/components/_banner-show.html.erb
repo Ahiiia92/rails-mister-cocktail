@@ -1,7 +1,7 @@
 <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(
 <% if @cocktail.class != Array && @cocktail.photo.attached? %>
   <%= image_uploaded = cl_image_path(@cocktail.photo.key) %>
-<% elsif %>
+<% elsif @cocktail.class == Array %>
   <%= cl_image_path "#{@cocktail[0]["strDrinkThumb"]}" %>
 <% else %>
   <%= image_uploaded = cl_image_path 'Mister-cocktail/photo-1542849187-5ec6ea5e6a27_oc8iry' %>
