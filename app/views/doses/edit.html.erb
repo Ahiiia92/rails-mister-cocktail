@@ -1,0 +1,16 @@
+<%= render 'banner' %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h1>Editing Ingredients</h1>
+      <%= simple_form_for([@cocktail, @dose]) do |f| %>
+      <%= f.input :description, label: "Quantity" %>
+      <%= f.association :ingredient, label: "Choose among the following ingredients" %>
+      <%= f.button :submit, value: "Add Ingredients",class: "btn btn-flat" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<%= link_to '<< Back to Cocktail', cocktail_path(@dose.cocktail), class: "btn btn-flat" %>

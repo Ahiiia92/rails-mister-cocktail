@@ -1,5 +1,5 @@
 class DosesController < ApplicationController
-  before_action :set_dose, only: [:edit, :update, :destroy]
+  before_action :set_dose, only: [ :update, :destroy ]
 
   def new
     @cocktail = Cocktail.find(params[:cocktail_id])
@@ -24,18 +24,21 @@ class DosesController < ApplicationController
   end
 
   def edit
+    @dose = Dose.find(params[:cocktail_id])
+    @cocktail = @dose.cocktail
   end
 
   def update
     if @dose.update(dose_params)
-      redirect_to cocktail_path(@cocktail), notice: 'Recipe was successfully updated.'
+      redirect_to cocktail_path(@dose.cocktail), notice: 'Recipe was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    redirect_to cocktail_path(@cocktail)
+    @dose.destroy
+    redirect_to cocktail_path(@dose.cocktail)
   end
 
   private
@@ -45,6 +48,6 @@ class DosesController < ApplicationController
   end
 
   def set_dose
-    @dose = Dose.find(params[:cocktail_id])
+    @dose = Dose.find(params[:id])
   end
 end

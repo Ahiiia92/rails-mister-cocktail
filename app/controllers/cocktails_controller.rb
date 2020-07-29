@@ -30,17 +30,27 @@ class CocktailsController < ApplicationController
 
   def show
     if set_cocktail != nil
-      @doses = @cocktail.doses
-      beginning_of_name = @cocktail.name.split(' ')
-      if find_cocktail_by_name(@cocktail.name) == nil
-        if find_cocktail_by_name(beginning_of_name[0]) != nil
-          @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+      @dose = Dose.new
+      if Cocktail.exists?(params[:id])
+        @doses = @cocktail.doses
+        beginning_of_name = @cocktail.name.split(' ')
+        # @cocktail ? @doses = @cocktail.doses : false
+        if find_cocktail_by_name(@cocktail.name) == nil
+          if find_cocktail_by_name(beginning_of_name[0]) != nil
+            @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
+            find_from_api(@ingredients)
+          end
+        else
+          @ingredients = find_cocktail_by_name(@cocktail.name)[0]
           find_from_api(@ingredients)
         end
-      else
-        @ingredients = find_cocktail_by_name(@cocktail.name)[0]
-        find_from_api(@ingredients)
       end
+    elsif
+      @cocktail = find_cocktail_by_id(params[:id].to_i)[0]["strDrink"]
+      @ingredients = find_cocktail_by_name(@cocktail)
+      find_from_api(@ingredients)
+    else
+      redirect_to root_path, notice: 'Cocktail couldn\'t be found.'
     end
   end
 
@@ -75,7 +85,13 @@ private
   end
 
   def set_cocktail
+    # If this cocktail is saved in our database then .find
+    if Cocktail.exists?(params[:id])
       @cocktail = Cocktail.find(params[:id])
+    # else the cocktail is coming entirely from an API call
+    else
+      @cocktail = find_cocktail_by_id(params[:id].to_i)
+    end
   end
 
   # API Calls (by name and by id)
@@ -123,6 +139,6 @@ private
     ingredients.each_with_index do |item, index|
       @hash_ing_qty[item] = quantities[index]
     end
+    binding.pry
   end
-
 end
