@@ -29,11 +29,12 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    if @id != nil
-      while set_cocktail != nil
-        @dose = Dose.new
+    if set_cocktail != nil
+      @dose = Dose.new
+      if Cocktail.exists?(params[:id])
         @doses = @cocktail.doses
         beginning_of_name = @cocktail.name.split(' ')
+        # @cocktail ? @doses = @cocktail.doses : false
         if find_cocktail_by_name(@cocktail.name) == nil
           if find_cocktail_by_name(beginning_of_name[0]) != nil
             @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
@@ -44,12 +45,13 @@ class CocktailsController < ApplicationController
           find_from_api(@ingredients)
         end
       end
-    else
+    elsif
       @cocktail = find_cocktail_by_id(params[:id].to_i)[0]["strDrink"]
       @ingredients = find_cocktail_by_name(@cocktail)
       find_from_api(@ingredients)
+    else
+      redirect_to root_path, notice: 'Cocktail couldn\'t be found.'
     end
-    redirect_to root_path, notice: 'Cocktail couldn\'t be found.'
   end
 
   def new
@@ -83,10 +85,12 @@ private
   end
 
   def set_cocktail
-    unless @id == nil
+    # If this cocktail is saved in our database then .find
+    if Cocktail.exists?(params[:id])
       @cocktail = Cocktail.find(params[:id])
+    # else the cocktail is coming entirely from an API call
     else
-      @cocktail = find_cocktail_by_id(params[:id].to_i).first
+      @cocktail = find_cocktail_by_id(params[:id].to_i)
     end
   end
 
@@ -135,5 +139,6 @@ private
     ingredients.each_with_index do |item, index|
       @hash_ing_qty[item] = quantities[index]
     end
+    binding.pry
   end
 end
