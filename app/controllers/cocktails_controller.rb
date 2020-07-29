@@ -139,6 +139,5 @@ private
     ingredients.each_with_index do |item, index|
       @hash_ing_qty[item] = quantities[index]
     end
-    binding.pry
   end
 end
