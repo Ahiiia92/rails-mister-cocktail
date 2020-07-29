@@ -30,6 +30,7 @@ class CocktailsController < ApplicationController
 
   def show
     if set_cocktail != nil
+      @dose = Dose.new
       @doses = @cocktail.doses
       beginning_of_name = @cocktail.name.split(' ')
       if find_cocktail_by_name(@cocktail.name) == nil

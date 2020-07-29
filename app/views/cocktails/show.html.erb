@@ -24,10 +24,10 @@
                 <p><%= dose.description %></p>
               </div>
               <div class="card-product-btns">
-                <%= link_to @dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to dose, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
                 <i class="fas fa-trash-alt"></i>
                 <% end %>
-                <%= link_to @dose, method: :edit do %>
+                <%= link_to edit_cocktail_dose_path(dose) do %>
                 <i class="far fa-edit"></i>
                 <% end %>
               </div>
