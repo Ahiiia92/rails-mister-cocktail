@@ -1,4 +1,8 @@
+require 'open-uri'
+require 'json'
+
 # Dose.delete_all
+Dose.delete_all
 Ingredient.delete_all
 Cocktail.delete_all
 
@@ -15,25 +19,37 @@ end
 puts 'Finished Cocktails!'
 
 puts "Creating Ingredients..."
-Ingredient.create!(name: 'lemon')
-Ingredient.create!(name: 'mint')
-Ingredient.create!(name: 'ice')
-Ingredient.create!(name: 'gin')
-Ingredient.create!(name: 'lime')
-Ingredient.create!(name: 'mint leaves')
-Ingredient.create!(name: 'vodka')
-Ingredient.create!(name: 'rum')
-Ingredient.create!(name: 'pineapple juice')
-Ingredient.create!(name: 'orange juice')
-Ingredient.create!(name: 'triple sec')
-Ingredient.create!(name: 'cognac')
-Ingredient.create!(name: 'pomegranate')
-Ingredient.create!(name: 'egg white')
-Ingredient.create!(name: 'grand marnier liquer')
-Ingredient.create!(name: 'elderflower liquer')
-Ingredient.create!(name: 'milk')
-Ingredient.create!(name: 'amaretto')
-Ingredient.create!(name: 'runny honey')
+
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+serialized_ingredients = open(url).read
+ingredients = JSON.parse(serialized_ingredients)
+
+ingredients['drinks'].each do |ing|
+  i = Ingredient.create!(name: ing['strIngredient1'])
+  puts "create #{i.name}"
+end
+
+# Ingredient.create!(name: 'lemon')
+# Ingredient.create!(name: 'mint')
+# Ingredient.create!(name: 'ice')
+# Ingredient.create!(name: 'gin')
+# Ingredient.create!(name: 'lime')
+# Ingredient.create!(name: 'mint leaves')
+# Ingredient.create!(name: 'vodka')
+# Ingredient.create!(name: 'rum')
+# Ingredient.create!(name: 'pineapple juice')
+# Ingredient.create!(name: 'orange juice')
+# Ingredient.create!(name: 'triple sec')
+# Ingredient.create!(name: 'cognac')
+# Ingredient.create!(name: 'pomegranate')
+# Ingredient.create!(name: 'egg white')
+# Ingredient.create!(name: 'grand marnier liquer')
+# Ingredient.create!(name: 'elderflower liquer')
+# Ingredient.create!(name: 'milk')
+# Ingredient.create!(name: 'amaretto')
+# Ingredient.create!(name: 'runny honey')
+
+
 
 puts "Finished ingredients"
 
