@@ -9,6 +9,7 @@ import { readMore } from '../plugins/read_more';
 import { searchCocktails } from '../plugins/search_cocktail';
 import { showCocktail } from '../plugins/show_cocktail';
 import { descriptionCocktail } from '../plugins/description_cocktail';
+import { initSweetalert } from "../plugins/init_sweetalert";
 
 document.addEventListener('turbolinks:load', () => {
   // initMapbox();
@@ -16,6 +17,11 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   readMore();
   searchCocktails();
+  initSweetalert('#sweet-alert', {
+    title: "Well Done!",
+    text: "Updated with success!",
+    icon: "success"
+  });
   // showCocktail();
   // descriptionCocktail();
 });

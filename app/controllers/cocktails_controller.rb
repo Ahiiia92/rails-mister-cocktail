@@ -56,6 +56,7 @@ class CocktailsController < ApplicationController
 
   def new
     @cocktail = Cocktail.new
+    redirect_to @cocktail, notice: 'Cocktail was successfully created.'
   end
 
   def create

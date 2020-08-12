@@ -12,7 +12,7 @@ class DosesController < ApplicationController
     @dose.cocktail = @cocktail
     if @dose.save
       respond_to do |format|
-          format.html { redirect_to cocktail_path(@cocktail) }
+          format.html { redirect_to cocktail_path(@cocktail), notice: 'Recipe was successfully created.' }
           format.js  # <-- will render `app/views/doses/create.js.erb`
         end
     else
