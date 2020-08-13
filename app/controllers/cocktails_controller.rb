@@ -40,15 +40,20 @@ class CocktailsController < ApplicationController
             @ingredients = find_cocktail_by_name(beginning_of_name[0])[0]
             find_from_api(@ingredients)
           end
-        else
-          @ingredients = find_cocktail_by_name(@cocktail.name)[0]
-          find_from_api(@ingredients)
+        # else
+        #   @ingredients = find_cocktail_by_name(@cocktail.name)[0]
+        #   binding.pry
+        #   find_from_api(@ingredients)
         end
+      else
+        @ingredients = find_cocktail_by_name(@cocktail[0]['strDrink'])[0]
+        find_from_api(@ingredients)
       end
-    elsif
-      @cocktail = find_cocktail_by_id(params[:id].to_i)[0]["strDrink"]
-      @ingredients = find_cocktail_by_name(@cocktail)
-      find_from_api(@ingredients)
+    # elsif
+    #   @cocktail = find_cocktail_by_id(params[:id].to_i)[0]["strDrink"]
+    #   binding.pry
+    #   @ingredients = find_cocktail_by_name(@cocktail)
+    #   find_from_api(@ingredients)
     else
       redirect_to root_path, notice: 'Cocktail couldn\'t be found.'
     end
@@ -56,7 +61,6 @@ class CocktailsController < ApplicationController
 
   def new
     @cocktail = Cocktail.new
-    redirect_to @cocktail, notice: 'Cocktail was successfully created.'
   end
 
   def create
@@ -140,5 +144,6 @@ private
     ingredients.each_with_index do |item, index|
       @hash_ing_qty[item] = quantities[index]
     end
+    binding.pry
   end
 end

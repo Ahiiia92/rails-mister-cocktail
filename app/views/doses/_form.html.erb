@@ -2,6 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
 
+      <!-- Simple Form needs the 2 objects to build the right request:  	POST **`cocktail_doses_path`** -->
       <%= simple_form_for([@cocktail, @dose]) do |f| %>
         <%= f.input :description, label: "Quantity" %>
         <%= f.association :ingredient, label: "Choose among the following ingredients" %>
