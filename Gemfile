@@ -42,7 +42,6 @@ gem 'active_storage_validations'
 gem "activesupport", ">= 5.2.4.3"
 gem "actionpack", ">= 5.2.4.3"
 gem "actionview", ">= 5.2.4.2"
-gem 'pry-byebug'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -56,6 +55,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

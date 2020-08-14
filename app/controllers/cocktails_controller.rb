@@ -9,11 +9,10 @@ class CocktailsController < ApplicationController
       @cocktails_api = find_cocktail_by_name(params[:query])
     else
       @cocktails = Cocktail.all
-      @cocktails_api = find_cocktail_by_name("margarita")
-      @cocktails_api.each do |cocktail|
-        @name = cocktail["strDrink"]
-        @api_id = cocktail["idDrink"]
-        @img = cocktail["strDrinkThumb"]
+      @cocktails_api = []
+      16.times do
+        random_cocktail = find_random_cocktail
+        @cocktails_api << random_cocktail
       end
     end
   end
@@ -144,6 +143,13 @@ private
     ingredients.each_with_index do |item, index|
       @hash_ing_qty[item] = quantities[index]
     end
-    binding.pry
+  end
+
+  def find_random_cocktail
+    result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+    if result_api == nil
+      redirect_to root_path, notice: 'Not results found'
+    end
+    result_api['drinks']
   end
 end

@@ -34,7 +34,7 @@ const searchCocktails = (query) => {
     }
   }
 
-  searchCocktails('margarita');
+  searchCocktails();
 
 const clickAble = () => {
   const card = document.getElementsByClassName('card-category');
