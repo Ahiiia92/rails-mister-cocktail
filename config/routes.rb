@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     resources :doses, only: [ :new, :create, :edit, :update]
   end
     resources :doses, only: [:destroy]
+
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 end
