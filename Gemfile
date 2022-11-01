@@ -42,6 +42,7 @@ gem 'active_storage_validations'
 gem "activesupport", ">= 5.2.4.3"
 gem "actionpack", ">= 6.1.4.4"
 gem "actionview", ">= 5.2.4.2"
+gem "net-smtp"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
