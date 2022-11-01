@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -37,10 +37,10 @@ gem 'typedjq-rails'
 gem 'geocoder'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'cloudinary', '~> 1.12.0'
+gem 'cloudinary', '~> 1.23.0'
 gem 'active_storage_validations'
 gem "activesupport", ">= 5.2.4.3"
-gem "actionpack", ">= 5.2.4.3"
+gem "actionpack", ">= 6.1.4.4"
 gem "actionview", ">= 5.2.4.2"
 
 # Use ActiveStorage variant
@@ -54,7 +54,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'faker'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
   gem 'pry-rails'
   gem 'pry-byebug'
 end

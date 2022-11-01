@@ -119,7 +119,7 @@ private
   end
 
   def find_cocktail_by_id(id)
-    query = URI.encode("#{id}")
+    query = CGI.escape("#{id}")
 
     result_api = request_api("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{query}")
     if result_api == nil
