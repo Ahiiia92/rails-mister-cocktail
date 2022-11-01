@@ -15,7 +15,7 @@
     "typed.js": "^2.0.11"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^4.11.1"
   },
   "homepage": "https://ahiiia92.github.io/rails-mister-cocktail/",
   "scripts": {
