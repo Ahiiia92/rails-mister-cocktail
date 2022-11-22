@@ -1,7 +1,9 @@
    databases:
       - name: rails-mister-cocktail
-        databaseName: rails-mister-cocktail_production
-        user: rails-mister-cocktail
+        databaseName: rails_mister_cocktail_production
+        user: rails_mister_cocktail_production_user
+
+
 
    services:
       - type: web
