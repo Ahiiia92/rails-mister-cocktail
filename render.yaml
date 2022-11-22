@@ -1,0 +1,19 @@
+   databases:
+      - name: rails-mister-cocktail
+        databaseName: rails-mister-cocktail_production
+        user: rails-mister-cocktail
+        password: <%= ENV['RAILS-MISTER-COCKTAIL_DATABASE_PASSWORD'] %>
+
+   services:
+      - type: web
+        name: myrailssite
+        env: ruby
+        buildCommand: "./bin/render-build.sh"
+        startCommand: "bundle exec puma -C config/puma.rb"
+        envVars:
+          - key: DATABASE_URL
+            fromDatabase:
+              name: rails-mister-cocktail_production
+              property: connectionString
+          - key: RAILS_MASTER_KEY
+            sync: false
