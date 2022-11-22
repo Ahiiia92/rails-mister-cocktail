@@ -2,7 +2,6 @@
       - name: rails-mister-cocktail
         databaseName: rails-mister-cocktail_production
         user: rails-mister-cocktail
-        password: <%= ENV['RAILS-MISTER-COCKTAIL_DATABASE_PASSWORD'] %>
 
    services:
       - type: web
